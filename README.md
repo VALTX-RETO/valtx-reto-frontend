@@ -26,7 +26,12 @@ npm install
 ```
 
 ## 3. Crea el enviroments.ts en base al enviroment.template.ts
-
+```bash
+export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:3000/api'
+};
+```
 
 ## 4. Levanta la app
 ```bash
