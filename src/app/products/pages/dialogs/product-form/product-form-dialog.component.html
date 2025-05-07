@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>
+    {{ readonly ? 'Ver Producto' : (data.product ? 'Editar Producto' : 'Nuevo Producto') }}
+</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="sNombre" />
+        <mat-error *ngIf="form.get('sNombre')?.hasError('required')">
+            El nombre es obligatorio
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Categoría</mat-label>
+        <input matInput formControlName="sCategoria" />
+        <mat-error *ngIf="form.get('sCategoria')?.hasError('required')">
+            La categoría es obligatoria
+        </mat-error>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Cerrar</button>
+    <button mat-flat-button color="primary" (click)="save()" [disabled]="form.invalid" *ngIf="!readonly">
+        {{ data.product ? 'Actualizar' : 'Crear' }}
+    </button>
+</mat-dialog-actions>

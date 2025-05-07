@@ -1,0 +1,42 @@
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-box">
+            <h2 class="title">Login</h2>
+
+            <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+                <div class="form-group">
+                    <label for="email"><i class="fa fa-envelope"></i></label>
+                    <input id="email" type="email" formControlName="sEmail" placeholder="example@example.com"
+                        class="form-control" />
+                    <div *ngIf="form.get('sEmail')?.invalid && form.get('sEmail')?.touched" class="error">
+                        Email inválido
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fa fa-lock"></i></label>
+                    <input id="password" type="password" formControlName="sPassword" placeholder="••••••••"
+                        class="form-control" />
+                    <div *ngIf="form.get('sPassword')?.invalid && form.get('sPassword')?.touched" class="error">
+                        Requerido
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" [disabled]="form.invalid">
+                    Ingresar
+                </button>
+                <a (click)="openRegisterDialog()" class="link-register">
+                    ¿No tienes una cuenta? crea una aquí
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-side" [ngStyle]="{ 'background-image': 'url(/assets/login-bg.jpg)' }">
+        <div class="welcome">
+            <h3>Bienvenido!</h3>
+            <hr />
+            <p>Gestiona tus productos con facilidad</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Crear nueva cuenta</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="sEmail" placeholder="tucorreo@ejemplo.com" />
+        <mat-error *ngIf="form.get('sEmail')?.hasError('required')">
+            El email es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('sEmail')?.hasError('email')">
+            Formato inválido
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="sPassword" placeholder="••••••••" />
+        <mat-error *ngIf="form.get('sPassword')?.hasError('required')">
+            La contraseña es obligatoria
+        </mat-error>
+        <mat-error *ngIf="form.get('sPassword')?.hasError('minlength')">
+            Debe tener al menos 6 caracteres
+        </mat-error>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">
+        Crear cuenta
+    </button>
+</mat-dialog-actions>

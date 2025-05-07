@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Imágenes del producto</h2>
+
+<mat-dialog-content>
+
+    <div *ngIf="loading" class="text-center my-4">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Cargando…</span>
+        </div>
+    </div>
+
+    <div *ngIf="!loading && images.length === 0" class="text-center my-4">
+        No hay imágenes.
+    </div>
+
+    <div *ngIf="!loading && images.length > 0" class="images-grid">
+        <img *ngFor="let img of images" [src]="img.sUrl" alt="Imagen" />
+    </div>
+
+    <hr />
+
+    <div class="file-upload">
+        <input #fileInput type="file" (change)="onFileSelected($event)" hidden />
+
+        <button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+            Seleccionar imagen
+        </button>
+
+        <span *ngIf="selectedFileName">
+            {{ selectedFileName }}
+        </span>
+
+        <button
+            mat-flat-button
+            color="accent"
+            type="button"
+            (click)="uploadImage()"
+            [disabled]="!selectedFile || uploading"
+            class="btnguardarimagen"
+        >
+            {{ uploading ? 'Subiendo...' : 'Subir imagen' }}
+        </button>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Cerrar</button>
+</mat-dialog-actions>
