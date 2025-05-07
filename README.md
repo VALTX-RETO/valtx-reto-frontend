@@ -28,7 +28,9 @@ npm install
 ## 3. Crea el enviroments.ts en base al enviroment.template.ts
 
 
-## 3. Levanta la app
+## 4. Levanta la app
 ```bash
 ng serve
 ```
+
+## 5. Al levantar el frontend y backend, puede crear usuarios en la pantalla del login, desde el botón de crear usuario
